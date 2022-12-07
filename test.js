@@ -7,10 +7,10 @@ function palindrome(str) {
 
         for (let i = 0; i < str.length / 2; i++) {
                 if (str[i] !== str[str.length - 1 - i]) {
-                        console.log(false);
+                        return false;
                 }
         }
-        console.log(true);
+
         return true;
 }
 palindrome('A man, a plan, a canal, Panama!');
