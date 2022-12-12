@@ -7,7 +7,7 @@ function encrypt(text, n) {
         let textArray = text.split('');
         let odd = [];
         let even = [];
-        let joinedArray = [];
+        let encryption = [];
 
         for (let i = 1; i <= n; i++) {
                 for (let j = 0; j < textArray.length; j++) {
@@ -18,12 +18,12 @@ function encrypt(text, n) {
                         }
                 }
 
-                joinedArray = odd.concat(even).join('');
-                textArray = joinedArray.split('');
+                encryption = odd.concat(even).join('');
+                textArray = encryption.split('');
                 odd = [];
                 even = [];
         }
-        return joinedArray;
+        return encryption;
 }
 
 function decrypt(encryptedText, n) {
