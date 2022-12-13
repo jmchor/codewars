@@ -30,6 +30,9 @@ function decrypt(encryptedText, n) {
         if (encryptedText === '' || n <= 0) return encryptedText;
         if (encryptedText === null) return null;
 
-        let decryptArray =
+        let decryptArray = encryptedText.split('')
+        let middle = decryptArray.length / 2
+        let firstHalf = decryptArray.splice(0, middle)
+        let secondHalf = decryptArray.splice(middle,decryptArray.length)
 
 }
