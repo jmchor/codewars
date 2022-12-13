@@ -32,7 +32,20 @@ function decrypt(encryptedText, n) {
 
         let decryptArray = encryptedText.split('')
         let middle = decryptArray.length / 2
-        let firstHalf = decryptArray.splice(0, middle)
-        let secondHalf = decryptArray.splice(middle,decryptArray.length)
+        let firstHalf = decryptArray.slice(middle)
+        let secondHalf = decryptArray.slice(0,middle)
+        let decryption = []
+        let decryptedText;
+
+        for (let i = 1; i <= n; i++) {
+                for (let j = 0; j < decryptArray.length; j++) {
+
+                        decryption.push(firstHalf[j])
+                        decryption.push(secondHalf[j])
+
+                }
+
+              decryptedText = decryption.join('')
+        }
 
 }
