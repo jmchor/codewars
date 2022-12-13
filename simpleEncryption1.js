@@ -4,22 +4,22 @@ function encrypt(text, n) {
         if (text === '' || n <= 0) return text;
         if (text === null) return null;
 
-        let textArray = text.split('');
+        let encryptArray = text.split('');
         let odd = [];
         let even = [];
         let encryption = [];
 
         for (let i = 1; i <= n; i++) {
-                for (let j = 0; j < textArray.length; j++) {
+                for (let j = 0; j < encryptArray.length; j++) {
                         if (j % 2 != 0) {
-                                odd.push(textArray[j]);
+                                odd.push(encryptArray[j]);
                         } else if (j % 2 === 0) {
-                                even.push(textArray[j]);
+                                even.push(encryptArray[j]);
                         }
                 }
 
                 encryption = odd.concat(even).join('');
-                textArray = encryption.split('');
+                encryptArray = encryption.split('');
                 odd = [];
                 even = [];
         }
@@ -29,4 +29,7 @@ function encrypt(text, n) {
 function decrypt(encryptedText, n) {
         if (encryptedText === '' || n <= 0) return encryptedText;
         if (encryptedText === null) return null;
+
+        let decryptArray =
+
 }
