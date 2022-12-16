@@ -34,17 +34,9 @@ function encrypt(text) {
                         secondConversion.push(region[difference]);
                 }
         }
-
         // eslint-disable-next-line prettier/prettier
         const replaceFirstLetter = secondConversion.splice(0,1, region[region.length - 1 - region.indexOf(secondConversion[0])]);
-
         return secondConversion.join('');
-
-        // const secondConversion = firstConversion.forEach((letter, index) => {
-        //         if (index > 0) {
-        //                 letter === region[textArray[index - 1] - textArray[index] + 77];
-        //         }
-        // });
 }
 
 function decrypt(encryptedText) {
@@ -52,8 +44,6 @@ function decrypt(encryptedText) {
         const region = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;-?! '()$%&"`.split('');
         const textArray = encryptedText.split('');
         if (textArray.some((letter) => !region.includes(letter))) throw new Error('Char not in Region!');
-
-        const replaceFirstLetter = textArray.splice(0, 1, region[region.length - 1 - region.indexOf(textArray[0])]);
 
         const returnArray = [textArray[0]];
         for (let i = 1; i < textArray.length; i++) {
