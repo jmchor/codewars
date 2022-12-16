@@ -3,10 +3,10 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-nested-ternary */
 function encrypt(text) {
+        if (text === '' || text === null) return text;
         const region = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;-?! '()$%&"`.split('');
         const textArray = text.split('');
         if (textArray.some((letter) => !region.includes(letter))) throw new Error('Char not in Region!');
-        if (text === '' || text === null) return text;
 
         const firstConversion = [];
 
@@ -48,8 +48,11 @@ function encrypt(text) {
 }
 
 function decrypt(encryptedText) {
+        if (encryptedText === '' || encryptedText === null) return encryptedText;
         const region = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;-?! '()$%&"`.split('');
         const textArray = encryptedText.split('');
+        if (textArray.some((letter) => !region.includes(letter))) throw new Error('Char not in Region!');
+
         const replaceFirstLetter = textArray.splice(0, 1, region[region.length - 1 - region.indexOf(textArray[0])]);
 
         const returnArray = [textArray[0]];
@@ -67,17 +70,8 @@ function decrypt(encryptedText) {
                                 decryption.push(returnArray[j].toUpperCase());
                         }
                 } else {
-                        decryption.push(textArray[j]);
+                        decryption.push(returnArray[j]);
                 }
         }
         return decryption.join('');
 }
-// "&61kujla"
-
-// region[region.indexOf(firstConversion[i - 1]) - region.indexOf(firstConversion[i])]
-//                                 B1                                    U20
-
-// i =1
-
-// region[(region.indexOf(returnArray[returnArray.length - 1]) + region.length - region.indexOf(textArray[i]))]
-//                                         s 44                      77                       36
