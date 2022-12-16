@@ -50,18 +50,34 @@ function encrypt(text) {
 function decrypt(encryptedText) {
         const region = `ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789.,:;-?! '()$%&"`.split('');
         const textArray = encryptedText.split('');
+        const replaceFirstLetter = textArray.splice(0, 1, region[region.length - 1 - region.indexOf(textArray[0])]);
 
-        const replaceFirstLetter = textArray.splice(0, 1, region[region.length - 77 + region.indexOf(textArray[0])]);
+        const returnArray = [textArray[0]];
+        for (let i = 1; i < textArray.length; i++) {
+                returnArray.push(
+                        // eslint-disable-next-line prettier/prettier
+                        region[(region.indexOf(returnArray[returnArray.length - 1]) + region.length - region.indexOf(textArray[i])) % region.length]);}
+        const decryption = [];
 
-        const dec = function (s) {
-                const ret = [s[0]];
-                for (let i = 1; i < s.length; i++)
-                        ret.push(
-                                region[
-                                        (region.indexOf(ret[ret.length - 1]) + region.length - region.indexOf(s[i])) %
-                                                region.length
-                                ]
-                        );
-                return ret.join('');
-        };
+        for (let j = 0; j < returnArray.length; j++) {
+                if (j % 2 !== 0) {
+                        if (returnArray[j] === returnArray[j].toUpperCase()) {
+                                decryption.push(returnArray[j].toLowerCase());
+                        } else if (returnArray[j] === returnArray[j].toLowerCase()) {
+                                decryption.push(returnArray[j].toUpperCase());
+                        }
+                } else {
+                        decryption.push(textArray[j]);
+                }
+        }
+        return decryption.join('');
 }
+// "&61kujla"
+
+// region[region.indexOf(firstConversion[i - 1]) - region.indexOf(firstConversion[i])]
+//                                 B1                                    U20
+
+// i =1
+
+// region[(region.indexOf(returnArray[returnArray.length - 1]) + region.length - region.indexOf(textArray[i]))]
+//                                         s 44                      77                       36
