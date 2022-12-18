@@ -12,79 +12,40 @@
 // You can't use Math.max, Math.min, and require
 // If one of the arguments can not be evaluated to a number, return NaN
 function max(...args) {
-        if (!args) return 0;
+        if (!args) return +0;
 
-        let numArray = [...args];
-        if ([...args] === []) return 0;
+        const numArray = [...args];
+        if ([...args] === []) return +0;
 
-        while (numArray.some((element) => typeof element === 'object')) {
-                const newArray = [];
-                numArray.forEach((element) => {
-                        if (typeof element === 'object') {
-                                element.forEach((subElement) => {
-                                        newArray.push(subElement);
-                                });
-                        } else if (element !== []) {
-                                newArray.push(element);
-                        } else {
-                        }
-                });
+        const flatArray = numArray.flat(Infinity).map((item) => +item);
 
-                numArray = newArray;
-        }
+        if (flatArray.some((element) => isNaN(element))) return NaN;
 
-        for (let i = 0; i < numArray.length; i++) {
-                if (/^\d+$/.test(numArray[i]) === true) {
-                        numArray[i] = parseInt(numArray[i]);
+        let biggest = flatArray[0];
+        for (let i = 1; i < flatArray.length; i++) {
+                if (flatArray[i] > biggest) {
+                        biggest = flatArray[i];
                 }
         }
-
-        if (numArray.some((element) => typeof element !== 'number')) return NaN;
-        let biggest = numArray[0];
-        for (let i = 1; i < numArray.length; i++) {
-                if (numArray[i] > biggest) {
-                        biggest = numArray[i];
-                }
-        }
-        return biggest;
+        return biggest || 0;
 }
 
 function min(...args) {
-        if (!args) return 0;
-        let numArray = [...args];
-        if ([...args] === []) return 0;
+        if (!args) return +0;
+        const numArray = [...args];
+        if ([...args] === []) return +0;
 
-        while (numArray.some((element) => typeof element === 'object')) {
-                const newArray = [];
-                numArray.forEach((element) => {
-                        if (typeof element === 'object') {
-                                element.forEach((subElement) => {
-                                        newArray.push(subElement);
-                                });
-                        } else if (element !== []) {
-                                newArray.push(element);
-                        } else if (/^\d+$/.test(element)) {
-                                newArray.push(parseInt(element));
-                        } else {
-                        }
-                });
-                numArray = newArray;
-        }
+        const flatArray = numArray.flat(Infinity).map((item) => +item);
 
-        for (let i = 0; i < numArray.length; i++) {
-                if (/^\d+$/.test(numArray[i]) === true) {
-                        numArray[i] = parseInt(numArray[i]);
+        if (flatArray.some((element) => isNaN(element))) return NaN;
+
+        let smallest = flatArray[0];
+        for (let i = 1; i < flatArray.length; i++) {
+                if (flatArray[i] < smallest) {
+                        smallest = flatArray[i];
                 }
         }
-
-        if (numArray.some((element) => typeof element !== 'number')) return NaN;
-        let smallest = numArray[0];
-        for (let i = 1; i < numArray.length; i++) {
-                if (numArray[i] < smallest) {
-                        smallest = numArray[i];
-                }
-        }
-        return smallest;
+        return smallest || 0;
 }
 
 // USeful solution
