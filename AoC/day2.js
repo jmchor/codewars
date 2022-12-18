@@ -1,9 +1,10 @@
+/* eslint-disable array-callback-return */
 const input = require('fs').readFileSync('./d2_input.txt', 'utf-8').split('\n');
 
-const inputArray = input.map((item) => item.split(' ').map((item) => item));
+const inputArray = input.map((data) => data.split(' ').map((element) => element));
 const numArray = inputArray.map(
-        (item) =>
-                item.map((item) => {
+        (elem) =>
+                elem.map((item) => {
                         if (item === 'A' || item === 'X') return 1;
                         if (item === 'B' || item === 'Y') return 2;
                         if (item === 'C' || item === 'Z') return 3;
