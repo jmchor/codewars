@@ -13,9 +13,9 @@ function generateHashtag(str) {
         stringArray = stringArray.join('');
 
         if (stringArray.length > 140) return false;
-        if (!str.length || str === ' ' || !stringArray.length) return false;
+        if (!str.length || !str.trim() || !stringArray.length) return false;
 
         console.log(stringArray);
 }
 
-console.log(generateHashtag(''));
+console.log(generateHashtag('  '));
