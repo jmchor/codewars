@@ -1,5 +1,6 @@
 function generateHashtag(str) {
-        let stringArray = str.split(' ');
+        let stringArray = str.trim().split(' ');
+        // or stringArray = str.split().filter(item => item !== '');
         for (let i = 0; i < stringArray.length; i++) {
                 stringArray[i] = stringArray[i].charAt(0).toUpperCase() + stringArray[i].slice(1);
         }
@@ -11,4 +12,4 @@ function generateHashtag(str) {
         console.log(stringArray);
 }
 
-console.log(generateHashtag('Hello there thanks for trying my Kata'));
+console.log(generateHashtag(' Hello there thanks                        for trying my Kata'));
