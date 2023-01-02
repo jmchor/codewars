@@ -15,7 +15,7 @@ function generateHashtag(str) {
         if (stringArray.length > 140) return false;
         if (!str.length || !str.trim() || !stringArray.length) return false;
 
-        console.log(stringArray);
+        return stringArray;
 }
 
 console.log(generateHashtag('  '));
