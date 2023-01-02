@@ -5,6 +5,8 @@ function generateHashtag(str) {
         }
         stringArray.unshift('#');
         stringArray = stringArray.join('');
+        if (stringArray.length > 140) return false;
+        if (!str.length || !stringArray.length) return false;
 
         console.log(stringArray);
 }
